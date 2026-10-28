@@ -70,8 +70,8 @@ async fn main() {
         .layer(CorsLayer::permissive())
         .with_state(state);
 
-    let addr = std::env::var("PHYSLLM_ADDR").unwrap_or_else(|_| "0.0.0.0:8080".into());
-    info!("PhysLLM API server on {addr}");
+    let addr = std::env::var("METALHEAD_ADDR").unwrap_or_else(|_| "127.0.0.1:8080".into()); // use reverse proxy in production
+    info!("MetalHead API server on {addr}");
     let listener = tokio::net::TcpListener::bind(&addr).await.unwrap();
     axum::serve(listener, app).await.unwrap();
 }
