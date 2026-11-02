@@ -20,7 +20,17 @@ impl std::error::Error for BackendError {}
 pub type Result<T> = std::result::Result<T, BackendError>;
 
 pub mod device;
+pub mod error;
+
 
 pub mod prelude {
-    pub use crate::device::{GpuDevice, GpuProperties};
+    pub use crate::{
+        BackendError,
+        Result,
+        device::{
+            GpuBackend,
+            GpuDevice,
+            GpuProperties,
+        },
+    };
 }
